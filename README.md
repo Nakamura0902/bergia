@@ -1,36 +1,78 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# BERGIA キャリアドラフト
 
-## Getting Started
+学生と企業をつなぐキャリアドラフトプラットフォーム。
 
-First, run the development server:
+## 技術スタック
+
+- **Frontend/Backend**: Next.js 16 (App Router) + TypeScript
+- **Styling**: Tailwind CSS v4
+- **Database**: PostgreSQL (Render)
+- **ORM**: Prisma
+- **Deploy**: Vercel
+
+---
+
+## ローカル開発
 
 ```bash
+npm install
+cp .env.example .env
+# .env の DATABASE_URL を設定
+npx prisma migrate dev
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+---
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## デプロイ手順
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+### 1. Render でデータベース作成
 
-## Learn More
+1. [render.com](https://render.com) にログイン
+2. **New** → **PostgreSQL** をクリック
+3. 以下を設定:
+   - **Name**: `bergia-db`
+   - **Region**: Singapore (Asia Pacific に近いもの)
+   - **Plan**: Free
+4. 作成後、**External Database URL** をコピーしておく
 
-To learn more about Next.js, take a look at the following resources:
+### 2. Vercel にデプロイ
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+1. このプロジェクトを GitHub にプッシュ
+2. [vercel.com](https://vercel.com) で **New Project** → GitHubリポジトリを選択
+3. **Environment Variables** に以下を追加:
+   ```
+   DATABASE_URL = <Render の External Database URL>
+   ```
+4. **Deploy** をクリック
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+### 3. データベースマイグレーション
 
-## Deploy on Vercel
+デプロイ後、ローカルから Render のDBにマイグレーションを適用:
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+```bash
+# .env の DATABASE_URL を Render の External Database URL に変更
+npx prisma migrate deploy
+```
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+または Vercel のビルドコマンドに追加:
+```
+prisma migrate deploy && prisma generate && next build
+```
+
+---
+
+## 環境変数
+
+| 変数名 | 説明 |
+|--------|------|
+| `DATABASE_URL` | PostgreSQL接続URL (Render) |
+
+---
+
+## API エンドポイント
+
+| Method | Path | 説明 |
+|--------|------|------|
+| POST | `/api/students` | 学生エントリー登録 |
+| POST | `/api/enterprises` | 企業お問い合わせ登録 |
