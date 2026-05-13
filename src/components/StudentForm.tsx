@@ -36,111 +36,67 @@ export default function StudentForm() {
   };
 
   const inputClass =
-    "w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-white placeholder-white/20 focus:outline-none focus:border-indigo-500/60 focus:bg-white/8 transition-all text-sm";
+    "w-full border border-gray-300 rounded-lg px-4 py-3 text-gray-900 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-transparent transition-all text-sm bg-white";
 
   return (
-    <section id="student-form" className="py-24 relative">
-      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_50%_50%,rgba(99,102,241,0.08),transparent_70%)]" />
-      <div className="max-w-xl mx-auto px-6 relative">
-        {/* Header */}
+    <section id="student-form" className="py-24 bg-white">
+      <div className="max-w-lg mx-auto px-6">
         <div className="text-center mb-10">
-          <span className="text-sm font-medium text-indigo-400 tracking-widest uppercase mb-3 block">
-            Student Entry
-          </span>
-          <h2 className="text-3xl md:text-4xl font-black text-white mb-3">
-            挑戦を始める
-          </h2>
-          <p className="text-white/40 text-sm">
-            エントリー情報を入力してください。後ほど担当者より連絡いたします。
+          <p className="text-sm font-semibold text-indigo-600 tracking-widest uppercase mb-3">Student Entry</p>
+          <h2 className="text-3xl font-black text-gray-900 mb-3">挑戦を始める</h2>
+          <p className="text-gray-500 text-sm">
+            エントリー情報を入力してください。後ほど担当者よりご連絡いたします。
           </p>
         </div>
 
-        {/* Form */}
-        <div className="glass rounded-2xl p-8">
+        <div className="bg-white border border-gray-200 rounded-2xl shadow-sm p-8">
           {status === "success" ? (
             <div className="text-center py-8">
               <div className="text-5xl mb-4">🎉</div>
-              <p className="text-white font-semibold text-lg mb-2">エントリー完了！</p>
-              <p className="text-white/50 text-sm">{message}</p>
+              <p className="text-gray-900 font-bold text-lg mb-2">エントリー完了！</p>
+              <p className="text-gray-500 text-sm">{message}</p>
               <button
                 onClick={() => setStatus("idle")}
-                className="mt-6 text-indigo-400 hover:text-indigo-300 text-sm underline"
+                className="mt-6 text-indigo-600 hover:text-indigo-700 text-sm underline"
               >
                 別の方のエントリーをする
               </button>
             </div>
           ) : (
-            <form onSubmit={handleSubmit} className="space-y-4">
+            <form onSubmit={handleSubmit} className="space-y-5">
               <div>
-                <label className="text-white/50 text-xs mb-1.5 block font-medium">氏名 *</label>
-                <input
-                  type="text"
-                  name="name"
-                  required
-                  value={form.name}
-                  onChange={handleChange}
-                  placeholder="山田 太郎"
-                  className={inputClass}
-                />
+                <label className="text-gray-700 text-sm font-medium mb-1.5 block">氏名 *</label>
+                <input type="text" name="name" required value={form.name} onChange={handleChange} placeholder="山田 太郎" className={inputClass} />
               </div>
               <div>
-                <label className="text-white/50 text-xs mb-1.5 block font-medium">メールアドレス *</label>
-                <input
-                  type="email"
-                  name="email"
-                  required
-                  value={form.email}
-                  onChange={handleChange}
-                  placeholder="taro@example.com"
-                  className={inputClass}
-                />
+                <label className="text-gray-700 text-sm font-medium mb-1.5 block">メールアドレス *</label>
+                <input type="email" name="email" required value={form.email} onChange={handleChange} placeholder="taro@example.com" className={inputClass} />
               </div>
               <div>
-                <label className="text-white/50 text-xs mb-1.5 block font-medium">大学名 *</label>
-                <input
-                  type="text"
-                  name="university"
-                  required
-                  value={form.university}
-                  onChange={handleChange}
-                  placeholder="○○大学"
-                  className={inputClass}
-                />
+                <label className="text-gray-700 text-sm font-medium mb-1.5 block">大学名 *</label>
+                <input type="text" name="university" required value={form.university} onChange={handleChange} placeholder="○○大学" className={inputClass} />
               </div>
               <div>
-                <label className="text-white/50 text-xs mb-1.5 block font-medium">学年</label>
-                <select
-                  name="year"
-                  value={form.year}
-                  onChange={handleChange}
-                  className={inputClass}
-                >
-                  <option value="" className="bg-[#1a1a2e]">選択してください</option>
-                  <option value="B1" className="bg-[#1a1a2e]">学部1年</option>
-                  <option value="B2" className="bg-[#1a1a2e]">学部2年</option>
-                  <option value="B3" className="bg-[#1a1a2e]">学部3年</option>
-                  <option value="B4" className="bg-[#1a1a2e]">学部4年</option>
-                  <option value="M1" className="bg-[#1a1a2e]">修士1年</option>
-                  <option value="M2" className="bg-[#1a1a2e]">修士2年</option>
+                <label className="text-gray-700 text-sm font-medium mb-1.5 block">学年</label>
+                <select name="year" value={form.year} onChange={handleChange} className={inputClass}>
+                  <option value="">選択してください</option>
+                  {["B1","B2","B3","B4","M1","M2"].map((y) => (
+                    <option key={y} value={y}>{y === "B1" ? "学部1年" : y === "B2" ? "学部2年" : y === "B3" ? "学部3年" : y === "B4" ? "学部4年" : y === "M1" ? "修士1年" : "修士2年"}</option>
+                  ))}
                 </select>
               </div>
-
               {status === "error" && (
-                <p className="text-red-400 text-sm bg-red-500/10 rounded-lg px-4 py-2.5">{message}</p>
+                <p className="text-red-600 text-sm bg-red-50 rounded-lg px-4 py-2.5">{message}</p>
               )}
-
               <button
                 type="submit"
                 disabled={status === "loading"}
-                className="w-full py-4 rounded-xl font-bold text-white bg-gradient-to-r from-indigo-500 to-purple-600 hover:from-indigo-400 hover:to-purple-500 disabled:opacity-50 disabled:cursor-not-allowed transition-all duration-200 shadow-lg shadow-purple-500/20"
+                className="w-full py-3.5 rounded-xl font-bold text-white bg-indigo-600 hover:bg-indigo-700 disabled:opacity-50 transition-colors"
               >
                 {status === "loading" ? "送信中..." : "エントリーする"}
               </button>
-
-              <p className="text-white/20 text-xs text-center">
-                エントリーすることで、
-                <a href="#" className="underline hover:text-white/40">プライバシーポリシー</a>
-                に同意したことになります。
+              <p className="text-gray-400 text-xs text-center">
+                エントリーすることで<a href="#" className="underline">プライバシーポリシー</a>に同意したことになります。
               </p>
             </form>
           )}

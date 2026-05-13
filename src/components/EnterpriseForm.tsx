@@ -7,9 +7,7 @@ export default function EnterpriseForm() {
   const [status, setStatus] = useState<"idle" | "loading" | "success" | "error">("idle");
   const [errorMsg, setErrorMsg] = useState("");
 
-  const handleChange = (
-    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
-  ) => {
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     setForm((prev) => ({ ...prev, [e.target.name]: e.target.value }));
   };
 
@@ -37,95 +35,55 @@ export default function EnterpriseForm() {
   };
 
   const inputClass =
-    "w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-white placeholder-white/20 focus:outline-none focus:border-purple-500/60 focus:bg-white/8 transition-all text-sm";
+    "w-full border border-gray-300 rounded-lg px-4 py-3 text-gray-900 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-transparent transition-all text-sm bg-white";
 
   return (
-    <section id="enterprise-form" className="py-24 relative">
-      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_50%_50%,rgba(168,85,247,0.08),transparent_70%)]" />
-      <div className="max-w-xl mx-auto px-6 relative">
-        {/* Header */}
+    <section id="enterprise-form" className="py-24 bg-gray-50">
+      <div className="max-w-lg mx-auto px-6">
         <div className="text-center mb-10">
-          <span className="text-sm font-medium text-purple-400 tracking-widest uppercase mb-3 block">
-            Enterprise Entry
-          </span>
-          <h2 className="text-3xl md:text-4xl font-black text-white mb-3">
-            パートナー参画
-          </h2>
-          <p className="text-white/40 text-sm">
+          <p className="text-sm font-semibold text-indigo-600 tracking-widest uppercase mb-3">Enterprise Entry</p>
+          <h2 className="text-3xl font-black text-gray-900 mb-3">パートナー参画</h2>
+          <p className="text-gray-500 text-sm">
             企業様のご参加お問い合わせはこちら。担当者よりご連絡差し上げます。
           </p>
         </div>
 
-        {/* Form */}
-        <div className="glass rounded-2xl p-8">
+        <div className="bg-white border border-gray-200 rounded-2xl shadow-sm p-8">
           {status === "success" ? (
             <div className="text-center py-8">
               <div className="text-5xl mb-4">✅</div>
-              <p className="text-white font-semibold text-lg mb-2">お問い合わせを受け付けました</p>
-              <p className="text-white/50 text-sm">
-                担当者より3営業日以内にご連絡いたします。
-              </p>
-              <button
-                onClick={() => setStatus("idle")}
-                className="mt-6 text-purple-400 hover:text-purple-300 text-sm underline"
-              >
+              <p className="text-gray-900 font-bold text-lg mb-2">お問い合わせを受け付けました</p>
+              <p className="text-gray-500 text-sm">担当者より3営業日以内にご連絡いたします。</p>
+              <button onClick={() => setStatus("idle")} className="mt-6 text-indigo-600 text-sm underline">
                 別のお問い合わせをする
               </button>
             </div>
           ) : (
-            <form onSubmit={handleSubmit} className="space-y-4">
+            <form onSubmit={handleSubmit} className="space-y-5">
               <div>
-                <label className="text-white/50 text-xs mb-1.5 block font-medium">会社名 *</label>
-                <input
-                  type="text"
-                  name="company"
-                  required
-                  value={form.company}
-                  onChange={handleChange}
-                  placeholder="株式会社〇〇"
-                  className={inputClass}
-                />
+                <label className="text-gray-700 text-sm font-medium mb-1.5 block">会社名 *</label>
+                <input type="text" name="company" required value={form.company} onChange={handleChange} placeholder="株式会社〇〇" className={inputClass} />
               </div>
               <div>
-                <label className="text-white/50 text-xs mb-1.5 block font-medium">会社メールアドレス *</label>
-                <input
-                  type="email"
-                  name="workEmail"
-                  required
-                  value={form.workEmail}
-                  onChange={handleChange}
-                  placeholder="hr@company.co.jp"
-                  className={inputClass}
-                />
+                <label className="text-gray-700 text-sm font-medium mb-1.5 block">会社メールアドレス *</label>
+                <input type="email" name="workEmail" required value={form.workEmail} onChange={handleChange} placeholder="hr@company.co.jp" className={inputClass} />
               </div>
               <div>
-                <label className="text-white/50 text-xs mb-1.5 block font-medium">お問い合わせ内容</label>
-                <textarea
-                  name="message"
-                  value={form.message}
-                  onChange={handleChange}
-                  rows={4}
-                  placeholder="参加形式、費用、スケジュールなど、お気軽にご質問ください。"
-                  className={inputClass + " resize-none"}
-                />
+                <label className="text-gray-700 text-sm font-medium mb-1.5 block">お問い合わせ内容</label>
+                <textarea name="message" value={form.message} onChange={handleChange} rows={4} placeholder="参加形式、費用、スケジュールなどお気軽にご質問ください。" className={inputClass + " resize-none"} />
               </div>
-
               {status === "error" && (
-                <p className="text-red-400 text-sm bg-red-500/10 rounded-lg px-4 py-2.5">{errorMsg}</p>
+                <p className="text-red-600 text-sm bg-red-50 rounded-lg px-4 py-2.5">{errorMsg}</p>
               )}
-
               <button
                 type="submit"
                 disabled={status === "loading"}
-                className="w-full py-4 rounded-xl font-bold text-white bg-gradient-to-r from-purple-500 to-indigo-600 hover:from-purple-400 hover:to-indigo-500 disabled:opacity-50 disabled:cursor-not-allowed transition-all duration-200 shadow-lg shadow-indigo-500/20"
+                className="w-full py-3.5 rounded-xl font-bold text-white bg-indigo-600 hover:bg-indigo-700 disabled:opacity-50 transition-colors"
               >
                 {status === "loading" ? "送信中..." : "お問い合わせする"}
               </button>
-
-              <p className="text-white/20 text-xs text-center">
-                送信することで、
-                <a href="#" className="underline hover:text-white/40">プライバシーポリシー</a>
-                に同意したことになります。
+              <p className="text-gray-400 text-xs text-center">
+                送信することで<a href="#" className="underline">プライバシーポリシー</a>に同意したことになります。
               </p>
             </form>
           )}

@@ -1,85 +1,46 @@
 export default function MissionSection() {
   const values = [
-    {
-      icon: "✓",
-      title: "本気の評価",
-      desc: "選考・スカウトに直結するリアルな評価",
-    },
-    {
-      icon: "↗",
-      title: "成長の機会",
-      desc: "フィードバックによる自己認識の深化",
-    },
-    {
-      icon: "♥",
-      title: "情熱の共鳴",
-      desc: "同じ熱量を持つ学生・企業との出会い",
-    },
-    {
-      icon: "◎",
-      title: "コミュニティ",
-      desc: "厳選されたメンバーとの深い繋がり",
-    },
-    {
-      icon: "🚀",
-      title: "キャリア加速",
-      desc: "早期オファーで一歩先のキャリアへ",
-    },
+    { icon: "✓", label: "誠実" },
+    { icon: "◎", label: "目的" },
+    { icon: "♥", label: "利他" },
+    { icon: "◈", label: "ワンチーム" },
+    { icon: "🚀", label: "挑戦" },
   ];
 
   return (
-    <section id="mission" className="py-24 relative overflow-hidden">
-      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_80%_50%,rgba(168,85,247,0.1),transparent_60%)]" />
+    <section id="mission" className="py-24 bg-gray-50">
+      <div className="max-w-4xl mx-auto px-6 text-center">
+        <h2 className="text-3xl md:text-4xl font-black text-gray-900 mb-6">
+          誰もが挑戦を循環させられる社会へ
+        </h2>
 
-      <div className="max-w-6xl mx-auto px-6 relative">
-        <div className="grid lg:grid-cols-2 gap-16 items-center">
-          {/* Left */}
-          <div>
-            <span className="text-sm font-medium text-purple-400 tracking-widest uppercase mb-4 block">
-              Our Mission
-            </span>
-            <h2 className="text-4xl md:text-5xl font-black text-white leading-tight mb-6">
-              学生と企業の
-              <br />
-              <span className="gradient-text">真剣勝負の場</span>
-              <br />
-              を創る。
-            </h2>
-            <p className="text-white/50 text-base leading-relaxed mb-8">
-              従来の就活は、書類と面接だけで人を評価しようとする。
-              しかしBERGIAは違う。
-              <br /><br />
-              4時間の濃密なイベントで、学生は本気のプレゼンとディスカッションに挑み、
-              企業はその姿を間近で見る。
-              マッチングではなく、ドラフト。
-              <br /><br />
-              君のポテンシャルを、正しく評価される場所がここにある。
-            </p>
+        <p className="text-gray-500 text-base leading-relaxed mb-8 max-w-2xl mx-auto">
+          代表Joyは、学生時代に「評価される機会すら得られない」という理不尽さを経験しました。
+          ポテンシャルがあっても、出会いがなければ埋もれてしまう。
+          <br /><br />
+          BERGIAは、すべての挑戦に光を当てるためのプラットフォームです。
+          企業と学生が対等に向き合い、本質的なマッチングが生まれる場所を創ります。
+        </p>
 
-            <div className="flex items-center gap-4">
-              <div className="w-12 h-px bg-gradient-to-r from-indigo-500 to-purple-500" />
-              <span className="text-white/30 text-sm">© 2024 Bergia Career Draft Platform</span>
+        <div className="bg-white rounded-2xl shadow-sm border border-gray-100 p-8 mb-12">
+          <p className="text-sm text-indigo-600 font-semibold tracking-widest uppercase mb-3">Vision</p>
+          <p className="text-xl md:text-2xl font-bold text-gray-900 leading-relaxed">
+            すべての価値が正しく評価され、
+            <br />
+            挑戦が循環する社会を創る
+          </p>
+        </div>
+
+        <div className="grid grid-cols-3 md:grid-cols-5 gap-4">
+          {values.map((v) => (
+            <div
+              key={v.label}
+              className="bg-white rounded-xl shadow-sm border border-gray-100 p-5 flex flex-col items-center gap-2"
+            >
+              <span className="text-2xl">{v.icon}</span>
+              <span className="font-bold text-gray-900 text-sm">{v.label}</span>
             </div>
-          </div>
-
-          {/* Right - Values */}
-          <div className="space-y-4">
-            {values.map((v, i) => (
-              <div
-                key={v.title}
-                className="group flex items-center gap-5 glass rounded-xl p-5 hover:border-purple-500/30 transition-all duration-300"
-                style={{ animationDelay: `${i * 100}ms` }}
-              >
-                <div className="w-10 h-10 rounded-full bg-gradient-to-br from-indigo-500/20 to-purple-500/20 flex items-center justify-center text-lg flex-shrink-0 group-hover:from-indigo-500/30 group-hover:to-purple-500/30 transition-all">
-                  {v.icon}
-                </div>
-                <div>
-                  <div className="font-semibold text-white text-sm">{v.title}</div>
-                  <div className="text-white/40 text-xs mt-0.5">{v.desc}</div>
-                </div>
-              </div>
-            ))}
-          </div>
+          ))}
         </div>
       </div>
     </section>

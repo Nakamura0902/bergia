@@ -1,5 +1,10 @@
 "use client";
 
+import Image from "next/image";
+
+const LOGO_URL =
+  "https://lh3.googleusercontent.com/aida-public/AB6AXuClvdGt3UDrpQtxRKbu4x8SedJUChJJS4pLtsah4we1z8rq1JaGkDZ6aQQHqigwprMrik3VLd-OUOcXA1rgrEzMssLoMoAghyLlT2lQZEDDPX7n-HzrF3VkvHLbHbjEMue4gbZ6moe1gGGgL4r_P-K06ieNcwVUfD8hcPI7_9s16YyljTHT6HTThJkI2Tvcm9e801NY3FqTYhRjFLoqwXEdXEkS7-S61WboUxHU3MD0wSZgA68-iAyEPkXRRrhqZnG1Y-cCgs6iqFE";
+
 export default function HeroSection() {
   const scrollTo = (id: string) => {
     document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
@@ -8,83 +13,37 @@ export default function HeroSection() {
   return (
     <section
       id="students"
-      className="relative min-h-screen flex items-center justify-center overflow-hidden"
+      className="min-h-screen flex flex-col items-center justify-center pt-20 pb-16 bg-white"
     >
-      {/* Background */}
-      <div className="absolute inset-0 bg-[#0a0a0f]">
-        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_20%_50%,rgba(99,102,241,0.15),transparent_60%)]" />
-        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_80%_20%,rgba(168,85,247,0.12),transparent_60%)]" />
-        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_60%_80%,rgba(236,72,153,0.08),transparent_50%)]" />
-      </div>
-
-      {/* Grid pattern */}
-      <div
-        className="absolute inset-0 opacity-[0.03]"
-        style={{
-          backgroundImage:
-            "linear-gradient(rgba(255,255,255,0.5) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.5) 1px, transparent 1px)",
-          backgroundSize: "60px 60px",
-        }}
-      />
-
-      {/* Content */}
-      <div className="relative z-10 max-w-5xl mx-auto px-6 text-center">
-        {/* Badge */}
-        <div className="inline-flex items-center gap-2 glass rounded-full px-4 py-2 mb-8 text-sm text-purple-300">
-          <span className="w-2 h-2 rounded-full bg-purple-400 animate-pulse-glow inline-block" />
-          Career Draft Platform
+      <div className="max-w-4xl mx-auto px-6 text-center">
+        <div className="mb-8 flex justify-center">
+          <Image
+            src={LOGO_URL}
+            alt="Bergia Logo"
+            width={180}
+            height={60}
+            className="h-16 w-auto object-contain"
+            unoptimized
+          />
         </div>
 
-        {/* Main Heading */}
-        <h1 className="text-5xl md:text-7xl font-black leading-tight mb-6 tracking-tight">
-          <span className="text-white">君の挑戦に、</span>
+        <h1 className="text-4xl md:text-6xl font-black text-gray-900 leading-tight mb-6 tracking-tight">
+          君の挑戦に、
           <br />
-          <span className="gradient-text">スポットライトを。</span>
+          スポットライトを。
         </h1>
 
-        {/* Sub */}
-        <p className="text-lg md:text-xl text-white/50 mb-12 max-w-2xl mx-auto leading-relaxed">
+        <p className="text-lg text-gray-500 mb-10 max-w-xl mx-auto leading-relaxed">
           8社との本気の1on1。早期オファー。選ばれた12名のコミュニティ。
-          <br className="hidden md:block" />
           あなたのキャリアを、ドラフトで動かせ。
         </p>
 
-        {/* CTAs */}
-        <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-          <button
-            onClick={() => scrollTo("student-form")}
-            className="group relative px-8 py-4 rounded-full font-bold text-white bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 hover:shadow-2xl hover:shadow-purple-500/30 transition-all duration-300 text-base"
-          >
-            <span className="relative z-10">挑戦を始める</span>
-            <div className="absolute inset-0 rounded-full bg-gradient-to-r from-indigo-400 via-purple-400 to-pink-400 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-          </button>
-          <button
-            onClick={() => scrollTo("mission")}
-            className="px-8 py-4 rounded-full font-semibold text-white/70 border border-white/10 hover:border-white/30 hover:text-white transition-all duration-300 text-base"
-          >
-            当日の詳細を見る
-          </button>
-        </div>
-
-        {/* Stats */}
-        <div className="mt-20 grid grid-cols-3 gap-8 max-w-2xl mx-auto">
-          {[
-            { num: "8", label: "企業からの\n1on1フィードバック" },
-            { num: "12", label: "厳選された\n学生のみ" },
-            { num: "2万円", label: "相当の\n景品・報酬" },
-          ].map(({ num, label }) => (
-            <div key={num} className="text-center">
-              <div className="text-3xl md:text-4xl font-black gradient-text mb-1">{num}</div>
-              <div className="text-xs text-white/40 whitespace-pre-line leading-relaxed">{label}</div>
-            </div>
-          ))}
-        </div>
-      </div>
-
-      {/* Scroll indicator */}
-      <div className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 text-white/20 text-xs">
-        <span>scroll</span>
-        <div className="w-px h-12 bg-gradient-to-b from-white/20 to-transparent" />
+        <button
+          onClick={() => scrollTo("student-form")}
+          className="inline-flex items-center gap-2 bg-indigo-600 hover:bg-indigo-700 text-white font-bold px-8 py-4 rounded-xl text-base transition-colors shadow-md"
+        >
+          挑戦を始める
+        </button>
       </div>
     </section>
   );
