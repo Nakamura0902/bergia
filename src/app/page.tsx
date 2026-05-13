@@ -1,24 +1,22 @@
 import Navbar from "@/components/Navbar";
 import HeroSection from "@/components/HeroSection";
-import FeaturesSection from "@/components/FeaturesSection";
 import MissionSection from "@/components/MissionSection";
+import FeaturesSection from "@/components/FeaturesSection";
 import DinnerSection from "@/components/DinnerSection";
 import EnterpriseSection from "@/components/EnterpriseSection";
-import StudentForm from "@/components/StudentForm";
-import EnterpriseForm from "@/components/EnterpriseForm";
+import FormsSection from "@/components/FormsSection";
 import Footer from "@/components/Footer";
 
 export default function Home() {
   return (
-    <main className="bg-[#0a0a0f] min-h-screen">
+    <main className="bg-[#0b0b12] min-h-screen">
       <Navbar />
       <HeroSection />
-      <FeaturesSection />
       <MissionSection />
+      <FeaturesSection />
       <DinnerSection />
       <EnterpriseSection />
-      <StudentForm />
-      <EnterpriseForm />
+      <FormsSection />
       <Footer />
     </main>
   );

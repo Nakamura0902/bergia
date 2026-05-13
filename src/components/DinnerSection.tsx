@@ -1,28 +1,25 @@
-export default function DinnerSection() {
-  return (
-    <section className="py-20 bg-indigo-600">
-      <div className="max-w-4xl mx-auto px-6 text-center">
-        <p className="text-indigo-200 text-sm font-semibold tracking-widest uppercase mb-4">After Event</p>
-        <h2 className="text-3xl md:text-4xl font-black text-white mb-6">
-          Dinner Party
-        </h2>
-        <p className="text-indigo-100 text-base leading-relaxed max-w-xl mx-auto mb-10">
-          イベント終了後は、学生・企業担当者・BERGIAメンバーが一堂に会するディナーパーティー。
-          肩書きのない、フラットな対話の場。ここでしか生まれない出会いと会話が待っている。
-        </p>
+"use client";
 
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-4 max-w-2xl mx-auto">
-          {[
-            { label: "参加者", value: "20〜30名" },
-            { label: "形式", value: "立食・着席" },
-            { label: "雰囲気", value: "カジュアル" },
-            { label: "時間", value: "2〜3時間" },
-          ].map(({ label, value }) => (
-            <div key={label} className="bg-white/10 rounded-xl p-4">
-              <div className="text-indigo-200 text-xs mb-1">{label}</div>
-              <div className="text-white font-bold text-sm">{value}</div>
-            </div>
-          ))}
+export default function DinnerSection() {
+  const scrollTo = (id: string) => document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
+
+  return (
+    <section className="py-12 px-6 bg-[#0b0b12]">
+      <div className="max-w-6xl mx-auto">
+        <div className="relative rounded-2xl overflow-hidden border border-white/10 p-8 md:p-10 flex flex-col md:flex-row items-start md:items-center justify-between gap-6"
+          style={{ background: "linear-gradient(135deg, #1a0a2e 0%, #2a0a1e 100%)" }}>
+          <div className="flex-1">
+            <p className="text-yellow-400 font-bold text-base mb-2">🍾 Dinner Party</p>
+            <p className="text-gray-300 text-sm leading-relaxed max-w-lg">
+              ドラフト後は、企業担当者との交流会を開催。肩書きを脱ぎ捨て、未来について語り合う熱い時間を提供します。
+            </p>
+          </div>
+          <button
+            onClick={() => scrollTo("student-form")}
+            className="grad-btn text-white font-bold px-6 py-3 rounded-xl text-sm whitespace-nowrap flex-shrink-0"
+          >
+            当日の詳細を見る
+          </button>
         </div>
       </div>
     </section>
