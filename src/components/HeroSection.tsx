@@ -8,19 +8,48 @@ export default function HeroSection() {
   const scrollTo = (id: string) => document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
 
   return (
-    <section id="students" className="relative pt-14 min-h-screen flex items-center overflow-hidden bg-[#0b0b12]">
-      {/* BG glows */}
-      <div className="absolute inset-0 pointer-events-none">
-        <div className="absolute top-1/2 left-1/4 -translate-x-1/2 -translate-y-1/2 w-96 h-96 rounded-full bg-purple-700/20 blur-3xl" />
-        <div className="absolute top-1/2 right-1/4 translate-x-1/2 -translate-y-1/2 w-96 h-96 rounded-full bg-pink-700/20 blur-3xl" />
+    <section
+      id="students"
+      style={{
+        minHeight: "100vh",
+        background: "#0b0b12",
+        paddingTop: "56px",
+        position: "relative",
+        overflow: "hidden",
+        display: "flex",
+        alignItems: "center",
+      }}
+    >
+      {/* Glow effects */}
+      <div style={{ position: "absolute", inset: 0, pointerEvents: "none" }}>
+        <div style={{
+          position: "absolute", top: "30%", left: "10%",
+          width: 400, height: 400, borderRadius: "50%",
+          background: "rgba(109,40,217,0.25)", filter: "blur(80px)",
+        }} />
+        <div style={{
+          position: "absolute", top: "20%", right: "10%",
+          width: 400, height: 400, borderRadius: "50%",
+          background: "rgba(190,24,93,0.2)", filter: "blur(80px)",
+        }} />
       </div>
 
-      <div className="relative max-w-6xl mx-auto px-6 py-20 w-full">
+      <div className="relative max-w-6xl mx-auto px-6 py-16 w-full">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 items-center">
 
           {/* Left — Students */}
-          <div className="bg-[#16162a]/80 border border-white/10 rounded-2xl p-8 flex flex-col gap-6">
-            <span className="inline-flex items-center gap-2 bg-white/10 text-white text-xs font-semibold px-3 py-1.5 rounded-full w-fit tracking-widest">
+          <div
+            className="rounded-2xl p-8 flex flex-col gap-5"
+            style={{
+              background: "rgba(22,22,42,0.85)",
+              border: "1px solid rgba(255,255,255,0.1)",
+              backdropFilter: "blur(12px)",
+            }}
+          >
+            <span
+              className="text-xs font-bold tracking-widest text-white px-3 py-1.5 rounded-full w-fit"
+              style={{ background: "rgba(255,255,255,0.12)" }}
+            >
               FOR STUDENTS
             </span>
             <p className="text-2xl font-black text-white leading-snug">
@@ -28,27 +57,40 @@ export default function HeroSection() {
             </p>
             <button
               onClick={() => scrollTo("student-form")}
-              className="grad-btn text-white font-bold px-6 py-3 rounded-xl text-sm w-fit"
+              className="text-white font-bold px-6 py-3 rounded-xl text-sm w-fit"
+              style={{ background: "linear-gradient(135deg, #7c3aed, #db2777)" }}
             >
               挑戦を始める
             </button>
           </div>
 
           {/* Center — Logo */}
-          <div className="flex items-center justify-center py-8">
-            <Image
-              src={LOGO_URL}
-              alt="Bergia Logo"
-              width={200}
-              height={80}
-              className="w-auto h-20 object-contain"
-              unoptimized
-            />
+          <div className="flex items-center justify-center py-6">
+            <div className="bg-white rounded-xl p-4 shadow-2xl">
+              <Image
+                src={LOGO_URL}
+                alt="Bergia Logo"
+                width={140}
+                height={60}
+                className="w-36 h-auto object-contain"
+                unoptimized
+              />
+            </div>
           </div>
 
           {/* Right — Enterprise */}
-          <div id="enterprise-hero" className="bg-[#16162a]/80 border border-white/10 rounded-2xl p-8 flex flex-col gap-6">
-            <span className="inline-flex items-center gap-2 bg-white/10 text-white text-xs font-semibold px-3 py-1.5 rounded-full w-fit tracking-widest">
+          <div
+            className="rounded-2xl p-8 flex flex-col gap-5"
+            style={{
+              background: "rgba(22,22,42,0.85)",
+              border: "1px solid rgba(255,255,255,0.1)",
+              backdropFilter: "blur(12px)",
+            }}
+          >
+            <span
+              className="text-xs font-bold tracking-widest text-white px-3 py-1.5 rounded-full w-fit"
+              style={{ background: "rgba(255,255,255,0.12)" }}
+            >
               FOR ENTERPRISES
             </span>
             <p className="text-2xl font-black text-white leading-snug">
@@ -56,7 +98,8 @@ export default function HeroSection() {
             </p>
             <button
               onClick={() => scrollTo("enterprise-form")}
-              className="grad-btn text-white font-bold px-6 py-3 rounded-xl text-sm w-fit"
+              className="text-white font-bold px-6 py-3 rounded-xl text-sm w-fit"
+              style={{ background: "linear-gradient(135deg, #7c3aed, #db2777)" }}
             >
               パートナー参画
             </button>

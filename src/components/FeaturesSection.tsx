@@ -7,23 +7,33 @@ export default function FeaturesSection() {
   ];
 
   return (
-    <section id="benefits" className="py-20 bg-[#0b0b12]">
-      {/* Gradient separator */}
-      <div className="h-1 w-full bg-gradient-to-r from-purple-600 via-pink-500 to-purple-600 mb-16" />
+    <section id="benefits" style={{ background: "#0b0b12", paddingBottom: "80px" }}>
+      {/* Gradient line */}
+      <div style={{ height: 4, background: "linear-gradient(90deg, #7c3aed, #ec4899, #7c3aed)", marginBottom: 64 }} />
 
       <div className="max-w-6xl mx-auto px-6">
-        <h2 className="text-2xl md:text-3xl font-black text-white text-center mb-12">
+        <h2
+          className="font-black text-white text-center mb-12"
+          style={{ fontSize: "clamp(1.3rem, 2.5vw, 1.8rem)" }}
+        >
           未来を掴む、4つの圧倒的な体験
         </h2>
 
         <div className="grid grid-cols-2 md:grid-cols-4 gap-5">
           {features.map((f) => (
-            <div key={f.title} className="bg-[#16162a] border border-white/10 rounded-2xl p-6 flex flex-col items-center text-center gap-4">
-              <div className="w-14 h-14 rounded-full bg-white/10 flex items-center justify-center text-2xl">
+            <div
+              key={f.title}
+              className="rounded-2xl p-6 flex flex-col items-center text-center gap-4"
+              style={{ background: "#16162a", border: "1px solid rgba(255,255,255,0.08)" }}
+            >
+              <div
+                className="w-14 h-14 rounded-full flex items-center justify-center text-2xl"
+                style={{ background: "rgba(139,92,246,0.2)" }}
+              >
                 {f.icon}
               </div>
               <p className="font-bold text-white text-sm">{f.title}</p>
-              <p className="text-gray-500 text-xs leading-relaxed">{f.desc}</p>
+              <p className="text-xs leading-relaxed" style={{ color: "#6b7280" }}>{f.desc}</p>
             </div>
           ))}
         </div>
