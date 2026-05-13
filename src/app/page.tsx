@@ -127,7 +127,7 @@ export default function LandingPage() {
                 alt="Bergia Logo"
                 fill
                 className="object-contain filter drop-shadow-lg"
-                src="/logo.png"
+                src="/bergia_logo_transparent.png"
               />
             </div>
           </motion.div>
