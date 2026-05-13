@@ -1,22 +1,21 @@
 import type { Metadata } from "next";
-import { Noto_Sans_JP } from "next/font/google";
+import { Outfit, Manrope } from "next/font/google";
 import "./globals.css";
+import { Toaster } from "sonner";
 
-const notoSansJP = Noto_Sans_JP({
-  variable: "--font-noto",
+const outfit = Outfit({
   subsets: ["latin"],
-  weight: ["300", "400", "500", "700", "900"],
+  variable: "--font-outfit",
+});
+
+const manrope = Manrope({
+  subsets: ["latin"],
+  variable: "--font-manrope",
 });
 
 export const metadata: Metadata = {
-  title: "BERGIA | キャリアドラフト",
-  description: "君の挑戦に、スポットライトを。学生と企業をつなぐキャリアドラフトプラットフォーム",
-  keywords: ["就活", "インターン", "キャリア", "新卒", "採用"],
-  openGraph: {
-    title: "BERGIA | キャリアドラフト",
-    description: "君の挑戦に、スポットライトを。",
-    type: "website",
-  },
+  title: "BERGIA - Career Draft Platform",
+  description: "挑戦を分かち合い、足かせを超えて、価値を輝かせる。",
 };
 
 export default function RootLayout({
@@ -25,8 +24,14 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="ja" className={`${notoSansJP.variable} h-full`}>
-      <body className="min-h-full flex flex-col antialiased">{children}</body>
+    <html lang="ja" className={`${outfit.variable} ${manrope.variable} dark`}>
+      <head>
+        <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet" />
+      </head>
+      <body className="antialiased">
+        {children}
+        <Toaster position="top-center" richColors />
+      </body>
     </html>
   );
 }
